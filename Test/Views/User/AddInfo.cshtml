@@ -1,0 +1,30 @@
+﻿@model Test.Models.User
+
+@{
+    ViewBag.Title = "AddInfo";
+}
+
+<h2>添加信息</h2>
+
+<body>
+    <div>
+        @using (Html.BeginForm("AddInfo1", "User", FormMethod.Post))
+        {
+            <p>
+                姓名:@Html.TextBox("UserName")<br />
+                性别:@Html.TextBox("UserSex")<br />
+                年龄:@Html.TextBox("UserAge")<br />
+                <br />
+                <input type="submit" value="提交" />
+            </p>
+        }
+    </div>
+</body>
+
+<div>
+    @Html.ActionLink("返回主菜单", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

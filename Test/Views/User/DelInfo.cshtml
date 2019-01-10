@@ -1,0 +1,63 @@
+﻿@model Test.Models.User
+
+@{
+    ViewBag.Title = "DelInfo";
+}
+
+<h2>是否要删除该用户信息？</h2>
+<body>
+    <div>
+        id=@ViewBag.UserId <br />
+        @Html.ActionLink("是", "DelInfo1")
+    </div>
+</body>
+
+@*<h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>User</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sex)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sex)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm("DelInfo1","User",FormMethod.Post)) {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>*@
+
+<br />
+<div>
+    @Html.ActionLink("返回主菜单", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

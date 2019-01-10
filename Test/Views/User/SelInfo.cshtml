@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Test.Models.User>
+
+@{
+    ViewBag.Title = "SelInfo";
+}
+
+<h2>查找结果</h2>
+
+<p>
+    @Html.ActionLink("新建信息", "AddInfo")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "UpdateInfo", new { id = item.Id }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Html.ActionLink("删除", "DelInfo", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("返回主菜单", "Index")
+</div>
+

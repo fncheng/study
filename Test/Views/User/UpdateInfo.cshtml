@@ -1,0 +1,78 @@
+﻿@model Test.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>修改信息</h2>
+
+<body>
+    <div>
+        @using (Html.BeginForm("UpdateInfo1", "User", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+        <p>
+            @*ID：@Html.Label(model.id)<br />*@
+            @*姓名:<input type="text" name="UserName" value="" /><br />
+            性别:<input type="text" name="UserSex" value="" /><br />
+            年龄:<input type="text" name="UserAge" value="" /><br />*@
+            姓名:@Html.TextBox("UserName",Model.Name)<br />
+            性别:@Html.TextBox("UserSex", Model.Sex)<br />
+            年龄:@Html.TextBox("UserAge", Model.Age)<br />
+            <input type="submit" value="保存" />
+        </p>
+        }
+    </div>
+</body>
+
+@*@using (Html.BeginForm("UpdateInfo1","User",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "Username", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sex, "UserSex", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "UserAge", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.BeginForm("UpdateInfo1","User",FormMethod.Post)
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}*@
+
+<div>
+    @Html.ActionLink("返回主菜单", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
