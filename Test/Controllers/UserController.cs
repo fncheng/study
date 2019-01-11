@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Test.Models;
 using Test.Helper;
+using System.Xml;
 
 namespace Test.Controllers
 {
@@ -34,11 +35,13 @@ namespace Test.Controllers
                 cmd.CommandType = CommandType.StoredProcedure;//Declaring that you want to execute is a stored procedure
                 conn.Open();    //Open the sql
                 SqlDataAdapter da = new SqlDataAdapter(text, conn);
-                DataSet ds = new DataSet();//Dataset contains a lot of table
+                DataSet ds = new DataSet("Students");//Dataset contains a lot of table
                 da.Fill(ds);
+                ds.WriteXml("write.xml", XmlWriteMode.WriteSchema);
 
                 DataTable dt = ds.Tables[0];
-
+                ds.WriteXml(@"D:\ck.xml");//以xml形式写入DataTable中的内容并保存在ck.xml文件中
+                xmlString = xmlString.Replace("<DocumentElement>", "<Table>").Replace("</DocumentElement>", "</YourName>");  //替换
                 foreach (DataRow row in dt.Rows)
                 {
                     User user = new Models.User();
@@ -189,6 +192,16 @@ namespace Test.Controllers
             {
                 cmd.Parameters.Add(parameter);
             }
+            ////
+            //XmlReader reader = new XmlReader();
+            //reader.Read();
+            //while(!reader.EOF)
+            //{
+            //    a += reader.ReadOuterXml();
+            //}
+            //reader.Close();
+            //return a;
+            ////
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<User> list = new List<User>();
