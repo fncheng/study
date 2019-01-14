@@ -37,11 +37,13 @@ namespace Test.Controllers
                 SqlDataAdapter da = new SqlDataAdapter(text, conn);
                 DataSet ds = new DataSet("Students");//Dataset contains a lot of table
                 da.Fill(ds);
-                ds.WriteXml("write.xml", XmlWriteMode.WriteSchema);
+                //ds.WriteXml("write.xml", XmlWriteMode.WriteSchema);
 
                 DataTable dt = ds.Tables[0];
-                ds.WriteXml(@"D:\ck.xml");//以xml形式写入DataTable中的内容并保存在ck.xml文件中
-                xmlString = xmlString.Replace("<DocumentElement>", "<Table>").Replace("</DocumentElement>", "</YourName>");  //替换
+                
+                ToXml(dt);
+                string xmlString = ToString();
+                xmlString = xmlString.Replace("<DocumentElement>", "<Table>").Replace("</DocumentElement>", "</Table>");  //替换
                 foreach (DataRow row in dt.Rows)
                 {
                     User user = new Models.User();
@@ -216,8 +218,18 @@ namespace Test.Controllers
                 list.Add(user);
             }
             return View(list);
-        } 
+        }
         #endregion
+        public  static void ToXml(DataTable dt)
+        {
+            dt.WriteXml(@"D:\abk.xml");//以xml形式写入DataTable中的内容并保存在ck.xml文件中
+        }
+
+        public static void ReadXmlByDataSet()
+        {
+            DataSet ds = new DataSet();
+            ds.GetXml(@"D:\abk.xml");
+        }
     }
 
 }
