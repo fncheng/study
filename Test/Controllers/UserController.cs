@@ -18,7 +18,7 @@ namespace Test.Controllers
         public static List<User> regionUserInfoList { get; set; }
         // GET: User
         #region Index
-        public ActionResult Index()
+        public ActionResult Index()//Index
         {
             List<User> userInfoList = new List<User>();//new a list to storing data
             var userInfoListCacheKey = "cache_2018-12-28_userinfoList";
