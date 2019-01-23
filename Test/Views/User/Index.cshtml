@@ -7,61 +7,59 @@
 <h2>首页</h2>
 @*View和Controller之间传递数据的一种方法*@
 @*<div>
-    @using (Html.BeginForm("AddInfo", "User", FormMethod.Post))
-    {
-        @Html.TextBox("name");
-        
-        <input type="submit" value="提交" />
-    }
-</div>*@
+        @using (Html.BeginForm("AddInfo", "User", FormMethod.Post))
+        {
+            @Html.TextBox("name");
+
+            <input type="submit" value="提交" />
+        }
+    </div>*@
 
 <p>
     <br />
     @Html.ActionLink("新建信息", "AddInfo")
-
-    @*@Html.ActionLink("修改信息", "UpdateInfo")
-
-    @Html.ActionLink("删除信息", "DelInfo")*@
-
+    <br />
+    <h3>按姓名查找:</h3>
     @using (Html.BeginForm("SelInfo", "User", FormMethod.Post))
     {
-<p>
-        按姓名查找:@Html.TextBox("SelInfo") @*SelInfo为要传递的值*@
+        @Html.TextBox("SelInfo") @*SelInfo为要传递的值*@
         <input type="submit" value="搜索" />
-    </p>
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sex)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Age)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sex)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.ActionLink("修改", "UpdateInfo", new { id=item.Id }) |
-            @*@Html.ActionLink("", "Detail", new { id=item.Id })*@
-            @Html.ActionLink("删除", "DelInfo1", new { id=item.Id })
-        </td>
-    </tr>
-}
 
-</table>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.ActionLink("修改", "UpdateInfo", new { id = item.Id }) |
+                    @*@Html.ActionLink("", "Detail", new { id=item.Id })*@
+                    @Html.ActionLink("删除", "DelInfo1", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
