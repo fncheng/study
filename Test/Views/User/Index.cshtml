@@ -20,9 +20,9 @@
     @Html.ActionLink("新建信息", "AddInfo")
     <br />
     <h3>按姓名查找:</h3>
-    @using (Html.BeginForm("SelInfo", "User", FormMethod.Post))
+    @using (Html.BeginForm("SelInfo", "User", FormMethod.Get))
     {
-        @Html.TextBox("SelInfo") @*SelInfo为要传递的值*@
+        @Html.TextBox("UserName") @*UserName为要传递的值*@
         <input type="submit" value="搜索" />
     }
 </p>

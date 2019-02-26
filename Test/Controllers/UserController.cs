@@ -121,11 +121,11 @@ namespace Test.Controllers
         #endregion
 
         #region SelInfo
-        [HttpPost]
-        public ActionResult SelInfo()
+        [HttpGet]
+        public ActionResult SelInfo(string UserName)
         {
-            var test = Request.Form["SelInfo"].ToString();
-            var sellist=sqlhelp.SelHelper(test);
+            //var test = Request.Form["SelInfo"].ToString();
+            var sellist=sqlhelp.SelHelper(UserName);
             ////
             //XmlReader reader = new XmlReader();
             //reader.Read();

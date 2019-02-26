@@ -18,7 +18,7 @@ namespace Test.Helper
         {
             string text = "userinfo_add";
             SqlParameter[] addpara =
-           {
+            {
                 new SqlParameter("@name",test1),
                 new SqlParameter("@sex",test2),
                 new SqlParameter("@age",test3)
@@ -84,6 +84,7 @@ namespace Test.Helper
         //Get
         public List<User> SelHelper(string test)
         {
+            //string spName = "Select * from people where name like '王'";
             string spName = "userinfo_sel";
             SqlParameter[] selpara =
             {
