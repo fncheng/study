@@ -1,0 +1,31 @@
+﻿@model Test.Models.Register
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>用户注册</h2>
+<head>
+    <style>
+        #b{
+            text-align:right;
+        }
+        #c {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="b">
+        <form action="Register1" name="UserForm" method="post">
+            <table>
+                <tr><td>用户名: <input type="text" name="UserAccount" value=""></td></tr>
+                <tr><td>密码:   <input type="password" name="UserPassword" value=""></td></tr>
+                <tr>
+                    <td id="c"><br /><input type="submit" name="register" value="点击注册" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+

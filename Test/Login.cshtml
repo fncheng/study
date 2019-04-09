@@ -1,0 +1,55 @@
+﻿@model Test.Models.Register
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>用户登陆</h2>
+<head>
+    <style>
+        #b{
+            /*width:500px;*/
+            text-align:right;
+        }
+        #c{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function loginFunction(form) {
+            var account = myForm.UserAccount.value;
+            if (account.indexOf(" ") != -1 || account == '') {
+                alert("请输入正确的用户名！")
+                form.UserAccount.focus();
+                return false;
+            }
+            var password = myForm.UserPassword.value;
+            if (password.indexOf(" ") != -1 || password == '') {
+                alert("请输入正确的密码！")
+                form.UserPassword.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <form action="Login1" name="myForm" method="post" onSubmit="return loginFunction(this);">
+        <table id="b">
+            <tr><td>用户名: <input type="text" name="UserAccount" value=""></td></tr>
+            <tr><td>密码:   <input type="password" name="UserPassword" value=""></td></tr>
+            <tr id="c">
+                <td><br /><input type="submit" name="load" value="登陆" /></td>
+            </tr>
+        </table>
+    </form>
+
+
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

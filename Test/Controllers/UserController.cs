@@ -11,8 +11,11 @@ using System.Xml;
 
 namespace Test.Controllers
 {
+    //[Authorize]
     public class UserController : Controller
     {
+        //不允许用户匿名访问
+        //[AllowAnonymous]
 
         public const string constr = @"Data Source=.;Initial Catalog=UserInfo;User ID=dongcheng;Password=Aa336699";
         public static List<User> regionUserInfoList { get; set; }
@@ -44,9 +47,6 @@ namespace Test.Controllers
 
                 DataTable dt = ds.Tables[0];
                 
-                ToXml(dt);
-                string xmlString = ToString();
-                xmlString = xmlString.Replace("<DocumentElement>", "<Table>").Replace("</DocumentElement>", "</Table>");  //替换
                 foreach (DataRow row in dt.Rows)
                 {
                     User user = new Models.User();
@@ -126,28 +126,18 @@ namespace Test.Controllers
         {
             //var test = Request.Form["SelInfo"].ToString();
             var sellist=sqlhelp.SelHelper(UserName);
-            ////
-            //XmlReader reader = new XmlReader();
-            //reader.Read();
-            //while(!reader.EOF)
-            //{
-            //    a += reader.ReadOuterXml();
-            //}
-            //reader.Close();
-            //return a;
-            ////
             return View(sellist);
         }
         #endregion
-        public  static void ToXml(DataTable dt)
-        {
-            dt.WriteXml(@"D:\abk.xml");//以xml形式写入DataTable中的内容并保存在ck.xml文件中
-        }
+        //public  static void ToXml(DataTable dt)
+        //{
+        //    dt.WriteXml(@"D:\abk.xml");//以xml形式写入DataTable中的内容并保存在ck.xml文件中
+        //}
 
-        public static void ReadXmlByDataSet()
-        {
-            DataSet ds = new DataSet();
-        }
+        //public static void ReadXmlByDataSet()
+        //{
+        //    DataSet ds = new DataSet();
+        //}
     }
 
     

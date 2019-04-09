@@ -17,18 +17,21 @@
     </script>
     <script>
         function myFunction(form) {
-            if (myForm.UserName.value == ' ') {
-                alert("用户名不能为空！")
+            var name = myForm.UserName.value;
+            if (name.indexOf(" ") != -1 || name == '') {
+                alert("请输入正确的用户名！")
                 form.UserName.focus();
                 return false;
             }
-            if (myForm.UserSex.value == ' ') {
-                alert("性别不能为空！")
+            var sex = myForm.UserSex.value;
+            if (sex.indexOf(" ") != -1 || sex == '') {
+                alert("请输入性别！")
                 form.UserSex.focus();
                 return false;
             }
-            if (myForm.UserAge.value == ' ') {
-                alert("年龄不能为空！")
+            var age = myForm.UserAge.value;
+            if (age.indexOf(" ") != -1 || age == '') {
+                alert("请输入年龄！")
                 form.UserAge.focus();
                 return false;
             }
