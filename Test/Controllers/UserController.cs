@@ -18,7 +18,7 @@ namespace Test.Controllers
         //[AllowAnonymous]
 
         public const string constr = @"Data Source=.;Initial Catalog=UserInfo;User ID=dongcheng;Password=Aa336699";
-        public static List<User> regionUserInfoList { get; set; }
+        public static List<User> RegionUserInfoList { get; set; }
 
         SqlHelper sqlhelp = new SqlHelper();
 
@@ -62,7 +62,7 @@ namespace Test.Controllers
             }
 
 
-            regionUserInfoList = userInfoList;
+            RegionUserInfoList = userInfoList;
 
             return View(userInfoList);
         } 
@@ -98,9 +98,9 @@ namespace Test.Controllers
         {
             User user = new User();
 
-            if (regionUserInfoList.Count > 0)
+            if (RegionUserInfoList.Count > 0)
             {
-                user = regionUserInfoList.Where(x => x.Id == id).FirstOrDefault();
+                user = RegionUserInfoList.Where(x => x.Id == id).FirstOrDefault();
             }
             else {
                 //if region user information list is null, then get the user from database

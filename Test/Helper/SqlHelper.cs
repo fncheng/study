@@ -67,8 +67,10 @@ namespace Test.Helper
                 new SqlParameter("@sex",test2),
                 new SqlParameter("@age",test3)
             };
-            SqlCommand cmd = new SqlCommand(text, conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand(text, conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
             foreach (SqlParameter parameter in updatepara)
             {
                 if (parameter != null)
